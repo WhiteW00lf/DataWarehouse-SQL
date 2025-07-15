@@ -14,11 +14,11 @@ CREATE TABLE IF NOT EXISTS orders (
     order_id VARCHAR(255) NOT NULL UNIQUE,
     customer_id VARCHAR(255) NOT NULL,
     order_status VARCHAR(50) NOT NULL,
-    order_purchase_timestamp TIMESTAMP NOT NULL,
-    order_approved_at TIMESTAMP NOT NULL,
-    order_delivered_carrier_date TIMESTAMP NOT NULL,
-    order_delivered_customer_date TIMESTAMP NOT NULL,
-    order_delivered_delivery_date TIMESTAMP NOT NULL,
+    order_purchase_timestamp TIMESTAMP ,
+    order_approved_at TIMESTAMP ,
+    order_delivered_carrier_date TIMESTAMP ,
+    order_delivered_customer_date TIMESTAMP ,
+    order_delivered_delivery_date TIMESTAMP ,
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
 );
 
@@ -36,13 +36,13 @@ CREATE TABLE IF NOT EXISTS products (
     id INT PRIMARY KEY IDENTITY(1,1),
     product_id VARCHAR(255) NOT NULL UNIQUE,
     product_category_name VARCHAR(100) NOT NULL,
-    product_name_lenght INT NOT NULL,
-    product_description_lenght INT NOT NULL,
-    product_photos_qty INT NOT NULL,
-    product_weight_g INT NOT NULL,
-    product_length_cm INT NOT NULL,
-    product_height_cm INT NOT NULL,
-    product_width_cm INT NOT NULL
+    product_name_lenght INT ,
+    product_description_lenght INT ,
+    product_photos_qty INT ,
+    product_weight_g INT ,
+    product_length_cm INT ,
+    product_height_cm INT ,
+    product_width_cm INT 
 );
 
 -- order_items table
@@ -77,9 +77,9 @@ CREATE TABLE IF NOT EXISTS order_review (
     review_id VARCHAR(255) NOT NULL UNIQUE,
     order_id VARCHAR(255) NOT NULL,
     review_score INT NOT NULL,
-    review_comment_title VARCHAR(255),
-    review_comment_message TEXT,
-    review_creation_date TIMESTAMP NOT NULL,
-    review_answer_timestamp TIMESTAMP NOT NULL,
+    review_comment_title VARCHAR(65535),
+    review_comment_message VARCHAR(65535),
+    review_creation_date TIMESTAMP ,
+    review_answer_timestamp TIMESTAMP ,
     FOREIGN KEY (order_id) REFERENCES orders(order_id)
 );
