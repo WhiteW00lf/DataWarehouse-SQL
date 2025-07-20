@@ -26,8 +26,13 @@ FROM purchase_table
 group by product_category;
 
 
+---  Which customer has placed the most orders? Show their id and number of orders.
 
-
+SELECT customer_uniquE_id, COUNT(order_id) AS number_oforders 
+FROM purchase_table
+GROUP BY customer_unique_id
+ORDER BY number_oforders DESC
+LIMIT 1;
 
 
 
