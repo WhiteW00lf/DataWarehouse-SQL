@@ -60,3 +60,21 @@ FROM purchase_table
 GROUP BY payment_type
 ORDER BY total_revenue DESC
 LIMIT 1;
+
+-- Find the difference between in time between order placement and order delivery.Which order took the longest time?
+
+SELECT 
+  order_id,
+  ROUND(EXTRACT(EPOCH FROM order_delivered_customer_date - order_purchase_timestamp) /3600,2) AS delivery_in_hours
+FROM orders
+WHERE order_purchase_timestamp IS NOT NULL 
+  AND order_delivered_customer_date IS NOT NULL 
+ORDER BY delivery_in_hours DESC
+LIMIT 10;
+
+
+/*
+DELETE FROM orders 
+WHERE order_approved_at is NULL OR
+order_delivered_delivery_date IS NULL;
+*/
