@@ -15,8 +15,15 @@ LIMIT 5;
 
 
 SELECT order_status,COUNT(order_id) AS orders FROM orders
-GROUP BY order_status
+GROUP BY order_status;
 
+
+-- Calculate the total revenue and number of units sold for each product.
+
+SELECT product_category,SUM(price_paid) AS Revenue,
+COUNT(product_id) AS units_sold
+FROM purchase_table 
+group by product_category;
 
 
 
