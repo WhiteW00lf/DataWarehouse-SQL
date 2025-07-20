@@ -40,6 +40,23 @@ LIMIT 1;
 SELECT customer_unique_id, SUM(price_paid) 
 as total_spent FROM purchase_table
 GROUP BY customer_unique_id
-ORDER BY total_spent DESC
+ORDER BY total_spent DESC;
 
+-- What’s the average order value (AOV)?
 
+SELECT AVG(price_paid) AS average_order_value FROM purchase_table;
+
+-- List the top 5 most expensive products
+SELECT product_id,product_category, MAX(price_paid) AS max_price
+FROM purchase_table
+GROUP BY product_id,product_category
+ORDER BY max_price DESC
+LIMIT 5;
+
+-- Which payment method generated the highest revenue overall?
+
+SELECT payment_type AS payment_method, SUM(price_paid) AS total_revenue
+FROM purchase_table 
+GROUP BY payment_type
+ORDER BY total_revenue DESC
+LIMIT 1;
