@@ -35,5 +35,11 @@ ORDER BY number_oforders DESC
 LIMIT 1;
 
 
+-- Calculate Customer Lifetime Value (CLTV): total amount each customer has spent.
+
+SELECT customer_unique_id, SUM(price_paid) 
+as total_spent FROM purchase_table
+GROUP BY customer_unique_id
+ORDER BY total_spent DESC
 
 
